@@ -42,7 +42,7 @@ To Run for testing, just run this command:
 
 `npm test`
 
-## Build and Deployment
+## Build
 
 To Build this project, just run this command:
 
@@ -53,6 +53,12 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.
 Your app is ready to be deployed!
+
+## Deployment
+
+This App is deploying in this site. You can check it by click link below.
+
+[pretest-hc.surge.sh](https://pretest-hc.surge.sh)
 
 ## Built With
 
