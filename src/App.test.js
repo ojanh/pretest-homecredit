@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, queryByAttribute, getByTitle } from '@testing-library/react';
 import { shallow, configure } from "enzyme";
 import { Provider } from 'react-redux';
 import App from './App';
@@ -12,16 +12,6 @@ import  renderer from "react-test-renderer";
 
 const mockStore = configureStore([]);
 configure({adapter: new Adapter()});
-
-
-function withRouter(ui,
-  { route = '/', history = createHistory(createMemorySource(route)) } = {}
-) {
-  return (<LocationProvider history={history}>{ui}</LocationProvider>)
-    // adding `history` to the returned utilities to allow us
-    // to reference it in our tests (just try to avoid using
-    // this to test implementation details).
-}
 
 test('It should be rendered bulbasaur in Home Page', () => {
   const store = mockStore({
@@ -51,7 +41,7 @@ test('It should be rendered bulbasaur in Home Page', () => {
 
 
 
-test('When Click Detail, browser should be to URL Detail', () => {
+test('When Click button, it should be response', () => {
   const store = mockStore({
     home: {
       pokeApi: {
@@ -81,15 +71,21 @@ test('When Click Detail, browser should be to URL Detail', () => {
   store.dispatch = jest.fn();
   
 
-  const {    } = render(
+  const {container} = render(
     <Provider store={store}>
-      {withRouter(<App />)}
+      <LocationProvider >
+        <Home />
+      </LocationProvider>
     </Provider>
   )
-
-  const button = container.
- 
   
+  const response = jest.fn();
+  const elemButton = container.getElementsByTagName('button').item(0);
+
+  elemButton.addEventListener('click', response);
+  elemButton.click();
+
+  expect(response.mock.calls.length).toEqual(1);
 });
 
 
