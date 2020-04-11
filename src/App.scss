@@ -1,0 +1,67 @@
+
+body {
+  background-color: rgb(224, 224, 224);
+}
+
+.invalid-feedback, .valid-feedback {
+  display: block;
+}
+
+.container {
+  display: flexbox;
+  flex-wrap: wrap;
+}
+
+.row {
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col-{
+  $base-size: 7%;
+
+  @for $i from 1 to 13 {
+    &#{$i}{
+      width: $base-size * $i;
+      display: block;
+      padding: {
+        left: 10px;
+        right: 10px;
+      };
+    }
+  }
+}
+
+.d- {
+  &flex {display: flex;}
+  &inline-flex {display: inline-flex;}
+  &block {display: block;}
+}
+
+.justify-content-{
+  $list: 'start','end','center';
+  $list2: 'between' 'space-between', 'around' 'space-around';
+
+  @each $el in $list {
+    &#{$el} {
+      justify-content: #{$el};
+    }
+  }
+
+  @each $tuple in $list2 {
+    &#{nth($tuple, 1)} {
+      justify-content: #{nth($tuple, 2)};
+    }
+  }
+}
+
+.align-items-{
+  $list: 'start','end','center';
+
+  @each $li in $list {
+    &#{$li}{
+      align-items: #{$li};
+    }
+  }
+}
