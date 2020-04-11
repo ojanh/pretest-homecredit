@@ -1,6 +1,6 @@
-# React SWAPI Test
+# React PokeAPI Test
 
-This project is showing data from star wars API (SWAPI). it's usead as pre assesment test for a company.
+This project is showing data from [pokeAPI](https://pokeapi.co/). it's usead as pre assesment test for a company.
 
 ## Getting Started
 
